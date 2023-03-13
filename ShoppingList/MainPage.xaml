@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:CategoryView="clr-namespace:ShoppingList.CategoryView"
+             x:Class="ShoppingList.MainPage">
+
+    <StackLayout>
+        <Grid Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button Text="Add new category 📃" Margin="5" Grid.Column="0" Clicked="AddNewCategory" />
+            <Button Text="Light/dark mode 🌙" Margin="5" Grid.Column="1" Clicked="ChangeDayNightMode" />
+            <Button Text="Change view mode 🪟" Margin="5" Grid.Column="2" Clicked="ChangeViewMode" />
+        </Grid>
+
+        <ScrollView>
+            <CollectionView ItemsSource="{Binding Categories}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <CategoryView:CategoryView Name="{Binding Name}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>

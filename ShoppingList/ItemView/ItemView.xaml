@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingList.ItemView.ItemView"
+             x:Name="this">
+
+    <Border Margin="5" Padding="5" HorizontalOptions="Center" BindingContext="{x:Reference this}">
+        <StackLayout>
+            <Grid Padding="10" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <CheckBox IsChecked="false" Grid.Column="0" />
+                <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" Grid.Column="1" />
+
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Button Text="➖" Margin="5" Grid.Column="0" Clicked="RemoveItemQuantity"/>
+                    <Entry x:Name="itemQuantity" Text="1" Margin="5" Grid.Column="1" />
+                    <Button Text="➕" Margin="5" Grid.Column="2" Clicked="AddItemQuantity"/>
+                </Grid>
+
+                <Button Text="Delete ❌" Margin="5" Grid.Column="3" Clicked="DeleteItem"/>
+            </Grid>
+        </StackLayout>
+    </Border>
+
+</ContentView>
