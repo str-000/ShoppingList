@@ -7,7 +7,7 @@ namespace ShoppingList.CategoryView;
 
 public partial class CategoryView : ContentView
 {
-    FirebaseHelper firebaseHelper = new FirebaseHelper();
+    FirebaseClient firebaseClient = new FirebaseClient("https://shoppinglist-60cbe-default-rtdb.europe-west1.firebasedatabase.app/");
 
     public class Item
     {
@@ -16,6 +16,8 @@ public partial class CategoryView : ContentView
         public bool IsChecked { get; set; }
         public int Id { get; set; }
     }
+
+    FirebaseHelper firebaseHelper = new FirebaseHelper();
 
     public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
 
@@ -36,6 +38,17 @@ public partial class CategoryView : ContentView
 		InitializeComponent();
 
         BindingContext = this;
+        
+        var collection = firebaseClient
+        .Child("Categories")
+        .AsObservable<Item>()
+        .Subscribe((item) =>
+        {
+            if (item.Object != null)
+            {
+                Items.Add(item.Object);
+            }
+        });
     }
 
     private async void DeleteCategory(System.Object sender, System.EventArgs e)
@@ -47,8 +60,8 @@ public partial class CategoryView : ContentView
     private async void AddNewItem(System.Object sender, System.EventArgs e)
     {
         string name = await App.Current.MainPage.DisplayPromptAsync("Add Item", "Enter the name of the item");
-        int count = Items.Count + 1;
-        Items.Add(new Item { Name = name, Id = count });
-        await firebaseHelper.AddCategory(name, count);
+        int count = MainPage.Categories.Count + 1;
+        int item_count = Items.Count + 1;
+        await firebaseHelper.AddItem(name, count, item_count);
     }
 }

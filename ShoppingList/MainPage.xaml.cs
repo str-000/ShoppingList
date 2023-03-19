@@ -7,6 +7,8 @@ namespace ShoppingList;
 
 public partial class MainPage : ContentPage
 {
+    FirebaseClient firebaseClient = new FirebaseClient("https://shoppinglist-60cbe-default-rtdb.europe-west1.firebasedatabase.app/");
+
     public class Category
     {
         public string Name { get; set; }
@@ -22,13 +24,23 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
         
         BindingContext = this;
+
+        var collection = firebaseClient
+        .Child("Categories")
+        .AsObservable<Category>()
+        .Subscribe((item) =>
+        {
+            if (item.Object != null)
+            {
+                Categories.Add(item.Object);
+            }
+        });
     }
     
     private async void AddNewCategory(System.Object sender, System.EventArgs e)
     {
         string name = await DisplayPromptAsync("Add Category", "Enter the name of the category");
         int count = Categories.Count + 1;
-        Categories.Add(new Category { Name = name, Id = count });
         await firebaseHelper.AddCategory(name, count);   
     }
 
