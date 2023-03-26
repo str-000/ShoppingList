@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\lukasz\source\repos\ShoppingList\ShoppingList\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-03-19T14:24:20.401</Modified>
+      <Modified>2023-03-26T14:56:30.491</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\lukasz\source\repos\ShoppingList\ShoppingList\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-03-19T14:24:19.965</Modified>
+      <Modified>2023-03-26T14:56:30.051</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lukasz\source\repos\ShoppingList\ShoppingList\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\ShoppingList.runtimeconfig.json">
       <PackagePath>ShoppingList.runtimeconfig.json</PackagePath>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lukasz\source\repos\ShoppingList\ShoppingList\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\ShoppingList.dll">
       <PackagePath>ShoppingList.dll</PackagePath>
-      <Modified>2023-03-19T14:24:19.156</Modified>
+      <Modified>2023-03-26T14:56:29.252</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lukasz\source\repos\ShoppingList\ShoppingList\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>ShoppingList.exe</PackagePath>
-      <Modified>2023-03-19T14:24:19.161</Modified>
+      <Modified>2023-03-26T14:56:29.258</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lukasz\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.13\runtimes\win-x64\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -1084,7 +1084,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lukasz\source\repos\ShoppingList\ShoppingList\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\ShoppingList.deps.json">
       <PackagePath>ShoppingList.deps.json</PackagePath>
-      <Modified>2023-03-19T14:24:20.199</Modified>
+      <Modified>2023-03-26T14:56:30.361</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lukasz\.nuget\packages\microsoft.maui.controls.ref.win\6.0.548\ref\net6.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

@@ -7,41 +7,40 @@ namespace ShoppingList;
 
 public partial class MainPage : ContentPage
 {
-    FirebaseClient firebaseClient = new FirebaseClient("https://shoppinglist-60cbe-default-rtdb.europe-west1.firebasedatabase.app/");
-
-    public class Category
+    public class CategoryGroup : ObservableCollection<Item>
     {
-        public string Name { get; set; }
-        public int Id { get; set; }
+        public string Name { get; private set; }
+
+        public CategoryGroup(string name, ObservableCollection<Item> items) : base(items)
+        {
+            Name = name;
+        }
     }
 
-    FirebaseHelper firebaseHelper = new FirebaseHelper();
+    public class Item
+    {
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public bool IsChecked { get; set; }
+        public string Id { get; set; }
+    }
 
-    public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
-    
+    public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
+
     public MainPage()
 	{
 		InitializeComponent();
-        
         BindingContext = this;
-
-        var collection = firebaseClient
-        .Child("Categories")
-        .AsObservable<Category>()
-        .Subscribe((item) =>
-        {
-            if (item.Object != null)
-            {
-                Categories.Add(item.Object);
-            }
-        });
     }
-    
+
     private async void AddNewCategory(System.Object sender, System.EventArgs e)
     {
         string name = await DisplayPromptAsync("Add Category", "Enter the name of the category");
-        int count = Categories.Count + 1;
-        await firebaseHelper.AddCategory(name, count);   
+    }
+
+    private async void AddNewItem(System.Object sender, System.EventArgs e)
+    {
+        string name = await App.Current.MainPage.DisplayPromptAsync("Add Item", "Enter the name of the item");
     }
 
     private void ChangeDayNightMode(System.Object sender, System.EventArgs e)

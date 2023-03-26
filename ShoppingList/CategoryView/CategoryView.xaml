@@ -11,26 +11,16 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" Grid.Column="0" />
-                <Button Text="Add Item ➕" Margin="5" Grid.Column="1" Clicked="AddNewItem"/>
-                <Button Text="Delete All ❌" Margin="5" Grid.Column="2" Clicked="DeleteCategory"/>
+                <Button Text="Delete All ❌" Margin="5" Grid.Column="1" Clicked="DeleteCategory"/>
             </Grid>
 
-            <ScrollView>
-                <CollectionView ItemsSource="{Binding Items}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <ItemView:ItemView Name="{Binding Name}" />
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
+            
         </StackLayout>
     </Border>
 </ContentView>

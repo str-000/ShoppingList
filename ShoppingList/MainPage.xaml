@@ -10,21 +10,23 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Button Text="Add new category 📃" Margin="5" Grid.Column="0" Clicked="AddNewCategory" />
-            <Button Text="Light/dark mode 🌙" Margin="5" Grid.Column="1" Clicked="ChangeDayNightMode" />
-            <Button Text="Change view mode 🪟" Margin="5" Grid.Column="2" Clicked="ChangeViewMode" />
+            <Button Text="Add Item ➕" Margin="5" Grid.Column="1" Clicked="AddNewItem"/>
+            <Button Text="Light/dark mode 🌙" Margin="5" Grid.Column="2" Clicked="ChangeDayNightMode" />
+            <Button Text="Change view mode 🪟" Margin="5" Grid.Column="3" Clicked="ChangeViewMode" />
         </Grid>
 
         <ScrollView>
-            <CollectionView ItemsSource="{Binding Categories}">
+            <CollectionView IsGrouped="true" ItemsSource="{Binding Items}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <CategoryView:CategoryView Name="{Binding Name}" />
+                        <Label Text="{Binding Name}" FontAttributes="Bold" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
