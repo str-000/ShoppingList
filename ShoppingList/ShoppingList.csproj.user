@@ -6,9 +6,6 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
-    <MauiXaml Update="CategoryView\CategoryView.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
     <MauiXaml Update="ItemView\ItemView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

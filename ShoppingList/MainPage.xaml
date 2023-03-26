@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:CategoryView="clr-namespace:ShoppingList.CategoryView"
+             xmlns:ItemView="clr-namespace:ShoppingList.ItemView"
              x:Class="ShoppingList.MainPage">
 
     <StackLayout>
@@ -17,16 +17,38 @@
             </Grid.RowDefinitions>
 
             <Button Text="Add new category 📃" Margin="5" Grid.Column="0" Clicked="AddNewCategory" />
-            <Button Text="Add Item ➕" Margin="5" Grid.Column="1" Clicked="AddNewItem"/>
+            
             <Button Text="Light/dark mode 🌙" Margin="5" Grid.Column="2" Clicked="ChangeDayNightMode" />
             <Button Text="Change view mode 🪟" Margin="5" Grid.Column="3" Clicked="ChangeViewMode" />
         </Grid>
 
         <ScrollView>
             <CollectionView IsGrouped="true" ItemsSource="{Binding Items}">
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Name}"
+                             FontSize="35"
+                             FontAttributes="Bold"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="2"/>
+                            <Button Text="Add Item ➕" Margin="5" Grid.Column="1" Clicked="AddNewItem" CommandParameter="{Binding CategoryName}"/>
+                            <Button Text="Delete Category ❌" Margin="5" Grid.Column="2" Clicked="DeleteCategory" CommandParameter="{Binding CategoryName}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="{Binding Name}" FontAttributes="Bold" />
+                        <ItemView:ItemView Name="{Binding Name}"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
